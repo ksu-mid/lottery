@@ -8,7 +8,6 @@ $x4 = $_POST['number_4'];
 $x5 = $_POST['number_5'];
 $x6 = $_POST['number_6'];
 $numbers = [];
-
 foreach ($file_array as $str){
     $arr = explode(";", $str);
     $new_arr = array_splice($arr, -6);
@@ -40,36 +39,13 @@ $result_3 = count(array_filter($numbers, function ($n) { return $n == 4; }));
 $result_4 = count(array_filter($numbers, function ($n) { return $n == 3; }));
 $result_5 = count(array_filter($numbers, function ($n) { return $n == 2; }));
 
-?>
+$data = array( 
+  "result_1" => $result_1, 
+  "result_2" => $result_2,
+  "result_3" => $result_3,
+  "result_4" => $result_4,
+  "result_5" => $result_5,
+);
 
-<table>
-        <thead>
-            <tr>За результатами 538 розіграшів</tr>
-            <tr>
-                <th>Вгадано</th>
-                <th>Кількість разів</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>6x6</td>
-                <td><?php echo $result_1; ?></td>
-            </tr>
-            <tr>
-                <td>5x6</td>
-                <td><?php echo $result_2; ?></td>
-            </tr>
-            <tr>
-                <td>4x6</td>
-                <td><?php echo $result_3; ?></td>
-            </tr>
-            <tr>
-                <td>3x6</td>
-                <td><?php echo $result_4; ?></td>
-            </tr>
-            <tr>
-                <td>2x6</td>
-                <td><?php echo $result_5; ?></td>
-            </tr>
-        </tbody>
-    </table>
+echo json_encode($data);
+?>
